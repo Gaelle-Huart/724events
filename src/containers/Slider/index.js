@@ -15,7 +15,7 @@ const Slider = () => {
   // Prevent the white page from appearing.
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index + 1 < byDateDesc.length ? index + 1 : 0),
+      () => setIndex(index + 1 < byDateDesc.length ? index + 1 : 0), // length is undifined
       5000
     );
   };
@@ -52,6 +52,7 @@ const Slider = () => {
               type="radio"
               name="radio-button"
               checked={index === radioIdx}
+              readOnly // added after the console warning, the radio in this code doesn't need an event handler
             />
           ))}
         </div>
