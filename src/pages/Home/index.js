@@ -13,7 +13,7 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const { data, error, last } = useData(); // ajouter global state : data & error
+  const { last } = useData(); // ajouter global state : data & error
   return (
     <>
       <header>
