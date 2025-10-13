@@ -10,7 +10,6 @@ import "./style.scss";
  * @function displayMonth ajoutée pour gérer l'affichage des mois
  * @key ajout de keys pour les divs conteneur
  * @alt ajout d'alts pour les divs conteneur
- * @React .Fragment pour grouper plusieurs éléments sans créer de balise div supplémentaire
  * @input ajout de key et alt, correction du checked ("idx" est devenu "index")
  */
 
@@ -36,6 +35,7 @@ const Slider = () => {
   return (
     <div key="0" alt="0" className="SlideCardList">
       {byDateDesc?.map((focus, idx) => (
+        // React.Fragment permet de grouper plusieurs éléments sans créer de div supplémentaire
         <React.Fragment key={focus.id}>
           <div
             key={`${focus.id} SlideCard`}
