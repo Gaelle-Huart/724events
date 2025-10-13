@@ -4,15 +4,6 @@ import { getMonth } from "../../helpers/Date";
 
 import "./style.scss";
 
-/* Changements :
- * @import React pour utiliser .Fragment
- * @const nextCard ajout de -1 dans setIndex, l'index 1 = 0
- * @function displayMonth ajoutée pour gérer l'affichage des mois
- * @key ajout de keys pour les divs conteneur
- * @alt ajout d'alts pour les divs conteneur
- * @input ajout de key et alt, correction du checked ("idx" est devenu "index")
- */
-
 const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);

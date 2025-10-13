@@ -16,9 +16,9 @@ const Select = ({
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
-    onChange();
+    onChange(newValue); // ajout de la variable pour remonter la catégorie dans le composant Parent
     setValue(newValue);
-    setCollapsed(newValue);
+    setCollapsed(!collapsed);
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
