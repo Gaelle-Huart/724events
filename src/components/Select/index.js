@@ -18,7 +18,7 @@ const Select = ({
   const changeValue = (newValue) => {
     onChange(newValue); // ajout de la variable pour remonter la catégorie dans le composant Parent
     setValue(newValue);
-    setCollapsed(!collapsed);
+    setCollapsed(true); // referme Select une fois la catégorie choisie
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
