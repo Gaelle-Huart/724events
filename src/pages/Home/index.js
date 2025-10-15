@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useData } from "../../contexts/DataContext";
 import Menu from "../../containers/Menu";
 import ServiceCard from "../../components/ServiceCard";
 import EventCard from "../../components/EventCard";
@@ -10,10 +12,21 @@ import Logo from "../../components/Logo";
 import Icon from "../../components/Icon";
 import Form from "../../containers/Form";
 import Modal from "../../containers/Modal";
-import { useData } from "../../contexts/DataContext";
+
 
 const Page = () => {
-  const {last} = useData()
+  const { data } = useData();
+  const [last, setLast] = useState({cover: "../public/logo.512.png", title: "En attente", type: "catégorie"})
+
+  useEffect(() => {
+    if(data) {
+      const dataEventSorted = data.events.sort((evtA, evtB) => 
+      new Date(evtA.date) > new Date(evtB.date) ? -1 : 1)
+      const lastEvent = dataEventSorted[0]
+      setLast(lastEvent)
+    }
+  }, [data])
+
   return <>
     <header>
       <Menu />
@@ -117,11 +130,12 @@ const Page = () => {
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
         <EventCard
-          imageSrc={last?.cover}
-          title={last?.title}
-          date={new Date(last?.date)}
+          imageSrc={last.cover}
+          imageAlt={last.title}
+          title={last.title}
+          date={new Date(last.date)}
           small
-          label="boom"
+          label={last.type}
         />
       </div>
       <div className="col contact">
