@@ -41,14 +41,14 @@ const Page = () => {
         <p>Nous organisons des événements sur mesure partout dans le monde</p>
         <div className="ListContainer">
           <ServiceCard imageSrc="/images/priscilla-du-preez-Q7wGvnbuwj0-unsplash1.png">
-            <h3 data-testid="service-entreprise">Soirée d’entreprise</h3>
+            <h3 id="service-entreprise">Soirée d’entreprise</h3>
             Une soirée d’entreprise vous permet de réunir vos équipes pour un
             moment convivial afin de valoriser votre société en projetant une
             image dynamique. Nous vous proposons d’organiser pour vous vos
             diners et soirée d’entreprise
           </ServiceCard>
           <ServiceCard imageSrc="/images/hall-expo.png">
-            <h3 data-testid="service-conférence">Conférences</h3>
+            <h3 id="service-conférence">Conférences</h3>
             724 events vous propose d’organiser votre évènement, quelle que soit
             sa taille, en s’adaptant à votre demande et à vos demandes. En tant
             que spécialistes de l’évènementiel, nous saurons trouver le lieu
@@ -56,7 +56,7 @@ const Page = () => {
             et faire de cet évènement un succès
           </ServiceCard>
           <ServiceCard imageSrc="/images/sophia-sideri-LFXMtUuAKK8-unsplash1.png">
-            <h3 data-testid="service-digital">Experience digitale</h3>
+            <h3 id="service-digital">Experience digitale</h3>
             Notre agence experte en contenus immersifs offre des services de
             conseil aux entreprises, pour l’utilisation de la réalité virtuelle,
             de la réalité augmentée et de la réalité mixte de l’animation
@@ -129,7 +129,7 @@ const Page = () => {
     </main>
     <footer data-testid="footer" className="row">
       <div className="col presta">
-        <h3>Notre derniére prestation</h3>
+        <h3 id="footer-prestation">Notre derniére prestation</h3>
         <Modal key={last.id} Content={<ModalEvent event={last} />}>
           {({ setIsOpened }) => (
             <EventCard
@@ -145,7 +145,7 @@ const Page = () => {
         </Modal>
       </div>
       <div className="col contact">
-        <h3>Contactez-nous</h3>
+        <h3 id="footer-contact">Contactez-nous</h3>
         <address>45 avenue de la République, 75000 Paris</address>
         <div>01 23 45 67 89</div>
         <div>contact@724events.com</div>
@@ -166,7 +166,7 @@ const Page = () => {
       </div>
       <div className="col description">
         <Logo size="large" />
-        <p>
+        <p id="footer-description">
           Une agence événementielle propose des prestations de service
           spécialisées dans la conception et l&apos;organisation de divers événements
           tels que des événements festifs, des manifestations sportives et

@@ -31,16 +31,34 @@ describe("When Form is created", () => {
 describe("When a page is created", () => {
   it("should display a list of events", async () => {
     const { container } = render(<Home />);
-    await screen.findByRole("heading", { name: "Nos réalisations" });
     const events = container.querySelector("#events");
     expect(events).toBeInTheDocument();
-  })
+  });
+
+  describe("and a click is triggered on the event", () => {
+    it("should open a modal", () => {
+      const { container } = render(<Home />);
+      fireEvent(
+        container.querySelector("#events"),
+        new MouseEvent("click", {
+          cancelable: true,
+          bubbles: true,
+        })
+      );
+      screen.findByText("Participants")
+    });
+  });
+
   it("should display a list of services", async () => {
-    render(<Home/>);
-    await screen.findByTestId("service-entreprise")
-    await screen.findByTestId("service-conférence")
-    await screen.findByTestId("service-digital")
+    const { container } = render(<Home />);
+    const entreprise = container.querySelector("#service-entreprise")
+    const conférence = container.querySelector("#service-conférence")
+    const digital = container.querySelector("#service-digital")
+    expect(entreprise).toBeInTheDocument();
+    expect(conférence).toBeInTheDocument();
+    expect(digital).toBeInTheDocument();
   })
+
   it("should display a list of people", async () => {
     render(<Home/>);
     await screen.findByText("Samira")
@@ -50,14 +68,22 @@ describe("When a page is created", () => {
     await screen.findByText("Christine")
     await screen.findByText("Isabelle")
   })
+
   it("should display a footer", async () => {
-    render(<Home/>);
+    const { container } = render(<Home/>);
     const footer = await screen.getByTestId("footer");
     expect(footer).toBeInTheDocument();
+    const prestation = container.querySelector("#footer-prestation")
+    const contact = container.querySelector("#footer-contact")
+    const description = container.querySelector("#footer-description")
+    expect(prestation).toBeInTheDocument();
+    expect(contact).toBeInTheDocument();
+    expect(description).toBeInTheDocument();
   })
+
   it("should display an event card of the last event", async () => {
     render(<Home/>);
     const eventCard = await screen.getByTestId("card-testid");
-    expect(eventCard).toBeInTheDocument();
+    expect(eventCard).toBeInTheDocument();    
   })
 });
